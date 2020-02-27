@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.edu.fpoly.bookmanager.dao.TheLoaiDao;
+import com.edu.fpoly.bookmanager.model.TheLoai;
+
 
 public class TheLoaiActivity extends AppCompatActivity {
     EditText edMaTheLoai, edTenTheLoai, edMoTa, edViTri;
@@ -40,7 +43,25 @@ public class TheLoaiActivity extends AppCompatActivity {
     }
 
 
+    public void addTheLoai(View view) {
+        TheLoaiDao theLoaiDao=new TheLoaiDao(TheLoaiActivity.this);
+        TheLoai theLoai=new TheLoai(edMaTheLoai.getText().toString(),edTenTheLoai.getText().toString(),edMoTa.getText().toString(),Integer.parseInt(edViTri.getText().toString()));
+        if (validateForm() > 0){
+            if (theLoaiDao.insertTheLoai(theLoai) >0){
+                Toast.makeText(getApplicationContext(),"Thêm Thành Công",Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(getApplicationContext(),"Thêm Thất Bại",Toast.LENGTH_LONG).show();
+            }
+        }
 
-
-
+    }
+    public int validateForm(){
+        int check=1;
+        if (edMaTheLoai.getText().length() == 0 || edTenTheLoai.getText().length() == 0 || edMoTa.getText().length() == 0 || edViTri.getText().length() == 0){
+            Toast.makeText(getApplicationContext(),"Bạn phải nhập đầy đủ thông tin ",Toast.LENGTH_LONG).show();
+            check=-1;
+        }
+        return check;
+    }
 }

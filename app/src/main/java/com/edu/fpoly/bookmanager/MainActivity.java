@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void viewListBookActivity(View v){
-        //Intent intent = new Intent(MainActivity.this,ListBookActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(MainActivity.this,ListBookActivity.class);
+        startActivity(intent);
     }
     public void ViewListHoaDonActivity(View v){
        // Intent intent = new Intent(MainActivity.this,ListHoaDonActivity.class);

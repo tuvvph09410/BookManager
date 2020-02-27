@@ -15,6 +15,7 @@ import java.util.List;
 public class NguoiDungDao  {
     private SQLiteDatabase db;
     private DatabaseHelper databaseHelper;
+
     public static final  String TABLE_NAME="nguoidung";
     public static final String SQL_NGUOI_DUNG="CREATE TABLE NguoiDung ( username text primary key, password text, phone text, hoten text)";
     public static final String TAG="NguoiDungDao";

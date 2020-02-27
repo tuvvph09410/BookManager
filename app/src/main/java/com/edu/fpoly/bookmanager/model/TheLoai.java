@@ -8,7 +8,6 @@ public class TheLoai {
     private String moTa;
     private int viTri;
     public TheLoai(){}
-
     public TheLoai(String maTheLoai, String tenTheLoai, String moTa, int viTri) {
         this.maTheLoai = maTheLoai;
         this.tenTheLoai = tenTheLoai;

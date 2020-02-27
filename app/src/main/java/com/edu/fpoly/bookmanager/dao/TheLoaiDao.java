@@ -16,7 +16,7 @@ public class TheLoaiDao {
     private SQLiteDatabase database;
     private DatabaseHelper helper;
     public static final String TABLE_NAME="TheLoai";
-    public static final String SQL_THE_LOAI="CREATE TABLE TheLoai (matheloai text primary key, tentheloai text, mota text , vitri int);";
+    public static final String SQL_THE_LOAI="CREATE TABLE TheLoai ( matheloai text primary key, tentheloai text, mota text , vitri int)";
     public static final String TAG="TheLoaiDao";
     public TheLoaiDao(Context context){
         helper=new DatabaseHelper(context);
@@ -55,5 +55,26 @@ public class TheLoaiDao {
         }
         cursor.close();
         return loaiList;
+    }
+    // update danh sách ra
+    public int updateTheLoai(TheLoai theLoai){
+        ContentValues values=new ContentValues();
+        values.put("matheloai",theLoai.getMaTheLoai());
+        values.put("tentheloai",theLoai.getTenTheLoai());
+        values.put("mota",theLoai.getMoTa());
+        values.put("vitri",theLoai.getViTri());
+        int result=database.update(TABLE_NAME,values,"matheloai=?",new String[]{theLoai.getMaTheLoai()});
+        if (result == 0){
+            return -1;
+        }
+        return 1;
+    }
+    // xóa danh sách
+    public int deleteTheLoaiByID(String matheloai){
+        int result=database.delete(TABLE_NAME,"matheloai=?",new String[]{matheloai});
+        if (result == 0){
+            return -1;
+        }
+        return 1;
     }
 }
