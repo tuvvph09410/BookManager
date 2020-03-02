@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,10 +29,10 @@ public class ListThemSachActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Quản Lý Sách");
+        setTitle("Sách");
         setContentView(R.layout.activity_list_them_sach);
         lvBook = (ListView) findViewById(R.id.lvBook);
-
+        registerForContextMenu(lvBook);
         sachDAO = new SachDao(ListThemSachActivity.this);
         dsSach = sachDAO.getAllSach();
 
@@ -86,11 +88,14 @@ public class ListThemSachActivity extends AppCompatActivity {
                 Intent intent = new Intent(ListThemSachActivity.this,ThemSachActivity.class);
                 startActivity(intent);
                 return(true);
-             case R.id.menu_ctx_del:
-                 Intent intent2 = new Intent(ListThemSachActivity.this,ThemSachActivity.class);
-                startActivity(intent2);
-                 return(true);
     }
         return super.onOptionsItemSelected(item);
+    }
+    protected void onResume() {
+        super.onResume();
+        dsSach.clear();
+        dsSach=sachDAO.getAllSach();
+        adapter.changeDataset(dsSach);
+
     }
 }

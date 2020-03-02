@@ -26,7 +26,6 @@ public class ThemSachActivity extends AppCompatActivity {
     Spinner spnTheLoai;
     String maTheLoai = "";
     List<TheLoai> listTheLoai = new ArrayList<>();
-    private SachDao sachDao1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,15 +86,16 @@ public class ThemSachActivity extends AppCompatActivity {
         spnTheLoai.setAdapter(dataAdapter);
     }
     public void addBook(View view){
+        SachDao sachDao=new SachDao(ThemSachActivity.this);
         Sach sach = new Sach(edMaSach.getText().toString(),maTheLoai,edTenSach.getText().toString(),
                 edTacGia.getText().toString(),edNXB.getText().toString(),
             Double.parseDouble(edGiaBia.getText().toString()),Integer.parseInt(edSoLuong.getText ().toString()));
 
     try {
         if (sachDao.inserSach(sach) > 0) {
-        Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_LONG).show();
     } else {
-        Toast.makeText(getApplicationContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Thêm thất bại", Toast.LENGTH_LONG).show();
     }
     } catch (Exception ex) {
         Log.e("Error", ex.toString());

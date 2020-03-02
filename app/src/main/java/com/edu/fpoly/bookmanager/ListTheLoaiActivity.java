@@ -3,9 +3,7 @@ package com.edu.fpoly.bookmanager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -77,30 +75,6 @@ public class ListTheLoaiActivity extends AppCompatActivity {
         loaiList.clear();
         loaiList=theLoaiDao.getAllTheLoai();
         theLoaiAdapter.changeDataset(loaiList);
-
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_context, menu);
-        menu.setHeaderTitle("Chọn thông tin");
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.menu_ctx_edit:
-                Intent intent1 = new Intent(ListTheLoaiActivity.this,TheLoaiActivity.class);
-                startActivity(intent1);
-                return(true);
-            case R.id.menu_ctx_del:
-                Intent intent2 = new Intent(ListTheLoaiActivity.this,TheLoaiActivity.class);
-                startActivity(intent2);
-                return(true);
-        }
-        return super.onContextItemSelected(item);
 
     }
 }

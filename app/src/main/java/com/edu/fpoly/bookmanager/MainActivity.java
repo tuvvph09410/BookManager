@@ -45,16 +45,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void ViewListHoaDonActivity(View v){
-       // Intent intent = new Intent(MainActivity.this,ListHoaDonActivity.class);
-       // startActivity(intent);
+        Intent intent = new Intent(MainActivity.this,ListHoaDonActivity.class);
+       startActivity(intent);
     }
     public void ViewTopSach(View v){
-       // Intent intent = new Intent(MainActivity.this,LuotSachBanChayActivity.class);
-       // startActivity(intent);
+       Intent intent = new Intent(MainActivity.this,LuotSachBanChayActivity.class);
+        startActivity(intent);
     }
     public void ViewThongKeActivity(View v){
-        //Intent intent = new Intent(MainActivity.this,ThongKeDoanhThuActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(MainActivity.this,ThongKeDoanhThuActivity.class);
+        startActivity(intent);
     }
 
 }

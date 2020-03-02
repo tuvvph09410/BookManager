@@ -81,8 +81,8 @@ public class ListNguoiDungActivity extends AppCompatActivity {
                 startActivity(intent);
                 return(true);
             case R.id.changePass:
-              //  intent = new Intent(ListNguoiDungActivity.this,ChangePasswordActivity.class);
-              //  startActivity(intent);
+               intent = new Intent(ListNguoiDungActivity.this,ChangePasswordActivity.class);
+              startActivity(intent);
                 return(true);
             case R.id.logOut:
                 SharedPreferences pref = getSharedPreferences("USER_FILE",MODE_PRIVATE);

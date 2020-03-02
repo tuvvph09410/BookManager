@@ -32,20 +32,22 @@ public class SachDao {
         values.put("NXB",sach.getNXB());
         values.put("giaBia",sach.getGiaBia());
         values.put("soLuong",sach.getSoLuong());
-        if(checkPrimaryKey(sach.getMaSach())){
+       if(checkPrimaryKey(sach.getMaSach())){
             int result=sqLiteDatabase.update(TABLE_NAME,values,"masach=?",new String[]{sach.getMaSach()});
             if (result==0){
                 return -1;
             }
         }else {
-            try {
-                if (sqLiteDatabase.insert(TABLE_NAME,null,values)== -1){
-                    return -1;
-                }
-            }catch (Exception ex){
-                Log.e(TAG,ex.toString());
-            }
-        }
+           try {
+               long result1= sqLiteDatabase.insert(TABLE_NAME, null, values);
+               if (result1 == -1) {
+                   return -1;
+
+               }
+           } catch (Exception ex) {
+               Log.e(TAG, ex.toString());
+           }
+       }
         return 1;
     }
     public List<Sach> getAllSach(){

@@ -9,7 +9,6 @@ public class Sach {
     private double giaBia;
     private int soLuong;
     public Sach(){}
-
     public Sach(String maSach, String maTheLoai, String tenSach, String tacGia, String NXB, double giaBia, int soLuong) {
         this.maSach = maSach;
         this.maTheLoai = maTheLoai;
